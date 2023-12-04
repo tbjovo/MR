@@ -1,4 +1,4 @@
-
+a<-read.table("FileNmae",header=T)#读取文件，header指的的是表头，T是有，F是无
 write.csv(b, file = "exposure_bmi.csv")
 library("TwoSampleMR")
 bmi<-system,file("exposure_bmi.csv",package = "TwoSampleMr") #在TwoSampleMR包所在的文件目录下，需要提前将目标文件提前移动

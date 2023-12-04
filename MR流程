@@ -5,7 +5,7 @@ write.csv(b, file = "exposure_bmi.csv")
 library("TwoSampleMR")
 bmi<-system.file("exposure_bmi.csv",package = "TwoSampleMR") #在TwoSampleMR包所在的文件目录下，需要提前将目标文件提前移动
 bmi_exp_dat<-read_exposure_data(filename = bmi ,sep ="," , snp_col ="SNP", beta_col= "beta", se_col = "se", effect_allele_col = "effect_allele" , other_allele_col = "other_allele", eaf_col = "eaf",pval_col = "p" )
-#sep表示间隔，csv文件中的间隔即逗号；
-bmi_exp_dat_clumped<-clump_data(bmi_exp_dat,clump_kb = 10000, clump_r2 = 0.001, clump_1 = 1,clump_p2 = 1, pop="EUR")#处理独立性：clumping: r^2<0.001, distance 1Mb
+#sep表示间隔，csv文件中的间隔即逗号；出现“No phenotype name specified, defaulting to 'exposure'.”是正常情况；
+bmi_exp_dat_clumped<-clump_data(bmi_exp_dat,clump_kb = 10000, clump_r2 = 0.001, clump_1 = 1,clump_p2 = 1, pop="EUR")#处理独立性：clumping: r^2<0.001, distance 1Mb；pop种族，欧洲（EUR），美洲（AMR），非洲（AFR），东亚（EAS），南亚（SAS）
 
 

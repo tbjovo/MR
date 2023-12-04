@@ -3,7 +3,7 @@ a<-read.table("FileNmae",header=T)#读取文件，header指的的是表头，T�
 b<-subset(a,p<5e-8)#将相关值p符合条件的筛选出来
 write.csv(b, file = "exposure_bmi.csv")
 library("TwoSampleMR")
-bmi<-system.file("exposure_bmi.csv",package = "TwoSampleMr") #在TwoSampleMR包所在的文件目录下，需要提前将目标文件提前移动
+bmi<-system.file("exposure_bmi.csv",package = "TwoSampleMR") #在TwoSampleMR包所在的文件目录下，需要提前将目标文件提前移动
 bmi_exp_dat<-read_exposure_data(filename = bmi ,sep ="," , snp_col ="SNP", beta_col= "beta", se_col = "se", effect_allele_col = "effect_al1ele" , other_a11ele_col = "other_a11ele", eaf_col = "eaf",pval_col = "p" )
 #sep表示间隔，csv文件中的间隔即逗号；
 bmi_exp_dat_clumped<-clump_data(bmi_exp_dat,clump_kb = 10000, clump_r2 = 0.001, clump_1 = 1,clump_p2 = 1, pop="EUR")#处理独立性：clumping: r^2<0.001, distance 1Mb
